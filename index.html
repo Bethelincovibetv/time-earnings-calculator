@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Earnings Calculator</title>
+    <title>Time Earnings Calculator | 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-[#0a0a0a] text-gray-300 font-sans antialiased">
+<body class="bg-[#0a0a0a] text-gray-300 font-sans antialiased min-h-screen">
     <nav class="fixed w-full z-50 p-6 flex justify-between items-center backdrop-blur-md bg-[#0a0a0a]/80 border-b border-white/5">
-        <span class="text-xl font-bold text-white tracking-tighter">TimeCalc</span>
+        <a href="#" class="text-xl font-bold text-white tracking-tighter hover:text-blue-500 transition-colors">TimeCalc</a>
         <div class="space-x-6">
             <button onclick="show('overview')" class="hover:text-blue-500 transition-colors">Overview</button>
             <button onclick="show('app')" class="hover:text-blue-500 transition-colors">Calculator</button>
@@ -17,15 +17,15 @@
         </div>
     </nav>
 
-    <main class="pt-32 min-h-screen">
+    <main class="pt-32 min-h-[calc(100vh-100px)]">
         <section id="overview" class="view px-6 text-center animate-fade-in">
             <h1 class="text-6xl font-extrabold text-white mb-6">Track your <span class="text-blue-500">value</span></h1>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">Professional real-time earnings tracking for modern freelancers.</p>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">Professional, high-precision earnings tracking for the modern freelance professional.</p>
         </section>
 
         <section id="app" class="view hidden px-6 flex justify-center">
-            <div class="w-full max-w-sm bg-[#161616] p-8 rounded-3xl border border-white/10 shadow-2xl">
-                <select id="currency" class="w-full bg-[#0a0a0a] border border-white/10 rounded-xl p-3 mb-4 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+            <div class="w-full max-w-sm bg-[#161616] p-8 rounded-3xl border border-white/10 shadow-2xl transition-all">
+                <select id="currency" class="w-full bg-[#0a0a0a] border border-white/10 rounded-xl p-3 mb-4 text-white focus:ring-2 focus:ring-blue-500 outline-none cursor-pointer">
                     <option value="$">USD ($)</option>
                     <option value="€">EUR (€)</option>
                     <option value="£">GBP (£)</option>
@@ -33,7 +33,7 @@
                 </select>
                 <input type="number" id="hourly-rate" placeholder="Hourly Rate" class="w-full bg-[#0a0a0a] border border-white/10 rounded-xl p-3 mb-6 text-white outline-none focus:border-blue-500">
                 <div class="text-center mb-8">
-                    <div id="total-earnings" class="text-5xl font-black text-white">$0.00</div>
+                    <div id="total-earnings" class="text-5xl font-black text-white tabular-nums">$0.00</div>
                     <div id="timer-display" class="text-gray-500 font-mono text-sm mt-2">00:00:00</div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
@@ -45,12 +45,13 @@
 
         <section id="how-it-works" class="view hidden px-6 text-center animate-fade-in">
             <h2 class="text-3xl font-bold text-white">Precision Tracking</h2>
-            <p class="mt-4 text-gray-400">Input your rate, hit start, and watch your earnings compound by the second.</p>
+            <p class="mt-4 text-gray-400">Select your currency, input your hourly rate, and calculate earnings in real-time.</p>
         </section>
     </main>
 
-    <footer class="py-10 text-center border-t border-white/10 text-xs text-gray-600">
-        &copy; 2026 Time Earnings Calculator. Precision engineered for high-value work.
+    <footer class="py-10 text-center border-t border-white/10 text-xs text-gray-500 space-y-2">
+        <p>&copy; 2026 Time Earnings Calculator. Precision engineered for high-value work.</p>
+        <p><a href="https://github.com/Bethelincovibetv/time-earnings-calculator" class="hover:text-blue-400">GitHub Repository</a> | <a href="https://time-earnings-calculator.vercel.app" class="hover:text-blue-400">Vercel Deployment</a></p>
     </footer>
     <script src="app.js"></script>
 </body>
