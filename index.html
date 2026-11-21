@@ -1,1 +1,42 @@
-<!DOCTYPE html><html lang="en" class="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Earnings Tracker</title><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#3D5AFE',background:'#121212',surface:'#1E1E1E',textSecondary:'#E0E0E0'}}}}</script><link rel="stylesheet" href="styles.css"></head><body class="bg-[#121212] text-[#E0E0E0] font-sans antialiased min-h-screen flex items-center justify-center p-4"><div class="w-full max-w-md bg-[#1E1E1E] rounded-2xl border border-[#333] shadow-2xl p-6"><header class="mb-6"><h1 class="text-2xl font-bold">Earnings Tracker</h1><p class="text-[#A0A0A0] text-sm">Track your session value in real-time.</p></header><main><div class="mb-5"><label class="block text-xs uppercase tracking-wider text-[#A0A0A0] mb-2">Currency</label><select id="currency" class="w-full bg-[#121212] border border-[#333] rounded-lg p-3 text-[#E0E0E0] focus:ring-2 focus:ring-[#3D5AFE] outline-none"><option value="$">USD ($)</option><option value="€">EUR (€)</option><option value="£">GBP (£)</option><option value="₦">NGN (₦)</option></select></div><div class="mb-5"><label class="block text-xs uppercase tracking-wider text-[#A0A0A0] mb-2">Hourly Rate</label><input type="number" id="hourly-rate" value="50" placeholder="Enter rate..." class="w-full bg-[#121212] border border-[#333] rounded-lg p-3 text-[#E0E0E0] focus:ring-2 focus:ring-[#3D5AFE] outline-none"></div><div class="sticky top-0 bg-[#1E1E1E] z-10 py-4 border-b border-[#333] mb-6 text-center"><div class="earnings-value text-4xl font-black text-[#3D5AFE]" id="total-earnings">$0.00</div><div class="time-elapsed text-lg text-[#A0A0A0] font-mono" id="time-elapsed">00:00:00</div></div><div class="grid grid-cols-2 gap-4"><button id="toggle-btn" class="bg-[#3D5AFE] hover:bg-[#304FFE] text-white py-3 rounded-lg font-semibold transition">Start</button><button id="reset-btn" class="bg-[#333] hover:bg-[#444] text-white py-3 rounded-lg font-semibold transition">Reset</button></div></main></div><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Earnings Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#121212] text-gray-200 min-h-screen flex items-center justify-center p-4 font-sans">
+    <div class="w-full max-w-sm bg-[#1e1e1e] rounded-3xl border border-gray-800 p-8 shadow-2xl">
+        <h1 class="text-xl font-bold mb-6 text-center text-white">Earnings Tracker</h1>
+        
+        <div class="space-y-4 mb-8">
+            <div>
+                <label class="block text-xs font-semibold text-gray-500 uppercase mb-1">Currency</label>
+                <select id="currency" class="w-full bg-[#121212] border border-gray-700 rounded-xl p-3 outline-none focus:border-blue-500 transition">
+                    <option value="$">USD ($)</option>
+                    <option value="€">EUR (€)</option>
+                    <option value="£">GBP (£)</option>
+                    <option value="₦">NGN (₦)</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-gray-500 uppercase mb-1">Hourly Rate</label>
+                <input type="number" id="hourly-rate" value="50" class="w-full bg-[#121212] border border-gray-700 rounded-xl p-3 outline-none focus:border-blue-500 transition">
+            </div>
+        </div>
+
+        <div class="text-center mb-8">
+            <div id="total-earnings" class="text-5xl font-extrabold text-blue-500 mb-2">$0.00</div>
+            <div id="time-elapsed" class="text-lg text-gray-400 font-mono">00:00:00</div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button id="toggle-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition">Start</button>
+            <button id="reset-btn" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 rounded-xl transition">Reset</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
