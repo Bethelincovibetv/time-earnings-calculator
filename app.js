@@ -1,47 +1,24 @@
-let seconds = 0;
-let timerInterval = null;
-const displayEarnings = document.getElementById('total-earnings');
-const displayTime = document.getElementById('time-elapsed');
-const rateInput = document.getElementById('hourly-rate');
-const currencySelect = document.getElementById('currency');
-const toggleBtn = document.getElementById('toggle-btn');
-const resetBtn = document.getElementById('reset-btn');
+let seconds = 0; let timerInterval = null;
+const displayEarnings = document.getElementById('total-earnings'), displayTime = document.getElementById('time-elapsed'), rateInput = document.getElementById('hourly-rate'), currencySelect = document.getElementById('currency'), toggleBtn = document.getElementById('toggle-btn'), resetBtn = document.getElementById('reset-btn');
 
-function formatTime(totalSeconds) {
-    const h = Math.floor(totalSeconds / 3600);
-    const m = Math.floor((totalSeconds % 3600) / 60);
-    const s = totalSeconds % 60;
-    return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-}
+const formatTime = (s) => [Math.floor(s/3600), Math.floor((s%3600)/60), s%60].map(v => String(v).padStart(2, '0')).join(':');
 
-function updateDisplay() {
-    const rate = parseFloat(rateInput.value) || 0;
-    const earnings = (rate / 3600) * seconds;
+function update() {
+    const earnings = (parseFloat(rateInput.value || 0) / 3600) * seconds;
     displayEarnings.innerText = `${currencySelect.value}${earnings.toFixed(2)}`;
     displayTime.innerText = formatTime(seconds);
 }
 
 toggleBtn.onclick = () => {
     if (timerInterval) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-        toggleBtn.innerText = 'Start';
+        clearInterval(timerInterval); timerInterval = null; toggleBtn.innerText = 'Start';
     } else {
-        timerInterval = setInterval(() => {
-            seconds++;
-            updateDisplay();
-        }, 1000);
-        toggleBtn.innerText = 'Pause';
+        timerInterval = setInterval(() => { seconds++; update(); }, 1000); toggleBtn.innerText = 'Pause';
     }
 };
 
-resetBtn.onclick = () => {
-    clearInterval(timerInterval);
-    timerInterval = null;
-    seconds = 0;
-    toggleBtn.innerText = 'Start';
-    updateDisplay();
-};
+resetBtn.onclick = () => { clearInterval(timerInterval); timerInterval = null; seconds = 0; toggleBtn.innerText = 'Start'; update(); };
 
-currencySelect.onchange = updateDisplay;
-rateInput.oninput = updateDisplay;
+const observer = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('active')));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+currencySelect.onchange = rateInput.oninput = update;
