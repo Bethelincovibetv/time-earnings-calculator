@@ -1,5 +1,15 @@
 let seconds = 0; let timerInterval = null;
-const displayEarnings = document.getElementById('total-earnings'), displayTime = document.getElementById('time-elapsed'), rateInput = document.getElementById('hourly-rate'), currencySelect = document.getElementById('currency'), toggleBtn = document.getElementById('toggle-btn'), resetBtn = document.getElementById('reset-btn');
+const displayEarnings = document.getElementById('total-earnings');
+const displayTime = document.getElementById('timer-display');
+const rateInput = document.getElementById('hourly-rate');
+const currencySelect = document.getElementById('currency');
+const toggleBtn = document.getElementById('toggle-btn');
+const resetBtn = document.getElementById('reset-btn');
+
+function show(viewId) {
+    document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
+    document.getElementById(viewId).classList.remove('hidden');
+}
 
 const formatTime = (s) => [Math.floor(s/3600), Math.floor((s%3600)/60), s%60].map(v => String(v).padStart(2, '0')).join(':');
 
@@ -18,7 +28,4 @@ toggleBtn.onclick = () => {
 };
 
 resetBtn.onclick = () => { clearInterval(timerInterval); timerInterval = null; seconds = 0; toggleBtn.innerText = 'Start'; update(); };
-
-const observer = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('active')));
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 currencySelect.onchange = rateInput.oninput = update;
